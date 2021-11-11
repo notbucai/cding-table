@@ -136,3 +136,17 @@ type Options = {
   style?: CSSProperties
 }
 ```
+
+## Todos
+
++[x] 静态数据渲染  
+
++[x] 动态加载数据  
+
++[x] 数据分页
+
++[ ] 测试覆盖率
+
++[ ] 长数据优化
+
++[ ] other...
