@@ -252,6 +252,5 @@ export default defineComponent({
 <style lang="scss" scoped>
 .cding-table-data {
   color: #ccc;
-  
 }
 </style>

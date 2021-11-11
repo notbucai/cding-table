@@ -1,6 +1,6 @@
-import { VueWrapper, mount as _mount, shallowMount } from '@vue/test-utils'
-import { ComponentPublicInstance, nextTick } from 'vue'
-import { ElCheckbox, ElCheckboxGroup, ElButton } from 'element-plus'
+import { mount as _mount } from '@vue/test-utils'
+import { nextTick } from 'vue'
+import { ElButton } from 'element-plus'
 
 import TableData from '../components/table-data.vue'
 import flushPromises from 'flush-promises'
@@ -127,7 +127,7 @@ describe('Table.vue', () => {
     const wrapper = mount({
       components: {
         TableData,
-        ElButton
+        ElButton,
       },
       template: `
       <template>
@@ -165,7 +165,7 @@ describe('Table.vue', () => {
             {
               checkList: ['1', '2'],
             },
-          ]
+          ],
         }
       },
       methods: {
@@ -186,7 +186,7 @@ describe('Table.vue', () => {
     await flushPromises()
     await nextTick()
 
-    const checkGroup = vm.$el.querySelectorAll('.el-table__body-wrapper .checkbox-group');
+    const checkGroup = vm.$el.querySelectorAll('.el-table__body-wrapper .checkbox-group')
     expect(checkGroup.length).toBe(3)
 
     const checkbox = vm.$el.querySelectorAll(

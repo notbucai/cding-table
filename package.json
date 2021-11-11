@@ -32,7 +32,7 @@
     "website:dev": "webpack server --config ./website/webpack.config.js",
     "rollup:dev": "rollup --config ./build/rollup.config.js --watch --sourcemap",
     "lint-fix": "eslint --fix .",
-    "lint": "eslint .",
+    "lint": "eslint --ext .js,.vue,.ts,.tsx --ignore-path .gitignore --fix src",
     "preinstall": "npx only-allow yarn",
     "pretest": "npx only-allow yarn",
     "prewebsite:dev": "npx only-allow yarn",
