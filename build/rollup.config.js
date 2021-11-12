@@ -2,13 +2,11 @@
  * @Author: bucai<1450941858@qq.com>
  * @Date: 2021-08-18 09:36:07
  * @LastEditors: bucai<1450941858@qq.com>
- * @LastEditTime: 2021-08-27 09:58:37
+ * @LastEditTime: 2021-11-12 18:01:05
  * @Description: 
  */
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import path from 'path'
-// import commonjs from '@rollup/plugin-commonjs'
-import { terser } from 'rollup-plugin-terser'
 import { eslint } from "rollup-plugin-eslint"
 import babel from '@rollup/plugin-babel'
 import typescript from 'rollup-plugin-typescript2'
