@@ -28,7 +28,6 @@
   ],
   "scripts": {
     "test": "jest --coverage",
-    "publish": "yarn publish",
     "build": "rollup --config ./build/rollup.config.js",
     "website:dev": "webpack server --config ./website/webpack.config.js",
     "rollup:dev": "rollup --config ./build/rollup.config.js --watch --sourcemap",
