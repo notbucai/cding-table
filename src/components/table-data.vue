@@ -71,7 +71,7 @@ type CellStyle<T> =
   }) => CSSProperties)
 
 
-export type ConfigType<T> = {
+export interface ConfigType<T> {
   stripe?: boolean
   height?: string | number
   maxHeight?: string | number
