@@ -3,3 +3,5 @@ dist/*
 lib/*
 *.css
 *.scss
+node_modules/*
+node_modules

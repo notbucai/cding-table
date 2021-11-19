@@ -8,9 +8,10 @@
    "esModuleInterop": true,
    "jsx": "preserve",
    "noLib": false,
+   "resolveJsonModule": true,
    "target": "es6",
    "sourceMap": true,
-  //  "allowJs": true,
+   "allowJs": true,
    "lib": [
      "ESNext", "DOM"
    ],
@@ -18,6 +19,7 @@
  },
  "exclude": [
    "lib",
+   "coverage",
    "node_modules"
  ]
 }

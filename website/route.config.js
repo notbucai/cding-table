@@ -22,6 +22,10 @@ const loadPage = name => {
   return getAsyncComponent(() => import(/* webpackChunkName: "pages" */ `./pages/${name}.vue`))
 }
 
+const loadDocs = path => {
+  return getAsyncComponent(() => import(/* webpackChunkName: "docs" */`./docs${path}.md`))
+}
+
 const registerRoute = navConfig => {
   let route = []
   route.push({
@@ -30,6 +34,7 @@ const registerRoute = navConfig => {
     component: loadPage('component'),
     children: [],
   })
+  const index = 0
   navConfig.forEach(nav => {
     if (nav.href) return
     if (nav.groups) {
@@ -48,13 +53,13 @@ const registerRoute = navConfig => {
   })
   function addRoute (page, index) {
     const component = loadDocs(page.path)
-    let child = {
+    const child = {
       path: page.path.slice(1),
       meta: {
         title: page.title || page.name,
         description: page.description,
       },
-      name: 'component-' + (page.title || page.name),
+      name: 'component-' + (page.title || page.name) + page.path.slice(1),
       component: component.default || component,
     }
 
@@ -73,26 +78,26 @@ const generateMiscRoutes = function () {
     children: [{
       path: 'design', // 设计原则
       name: 'guide-design',
-      meta: { },
+      meta: {},
       component: loadPage('design'),
     }, {
       path: 'nav', // 导航
       name: 'guide-nav',
       meta: {},
-      component: loadPage( 'nav'),
+      component: loadPage('nav'),
     }],
   }
 
   let resourceRoute = {
     path: `/resource`, // 资源
-    meta: { },
+    meta: {},
     name: 'resource',
     component: loadPage('resource'),
   }
 
   let indexRoute = {
     path: `/`, // 首页
-    meta: { },
+    meta: {},
     name: 'home',
     component: loadPage('index'),
   }
@@ -109,6 +114,5 @@ route = route.concat([{
   path: '/*',
   redirect: { path: `/` },
 }])
-
-
+console.log('route', route)
 export default route

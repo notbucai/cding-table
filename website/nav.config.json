@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "name": "开发指南",
+    "children": [
+      {
+        "path": "/installation",
+        "name": "安装"
+      },
+      {
+        "path": "/quickstart",
+        "name": "使用方式"
+      }
+    ]
+  },
+  {
+    "name": "例子",
+    "children": [
+      {
+        "path": "/test",
+        "name": "安装"
+      }
+    ]
+  }
+]

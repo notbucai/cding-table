@@ -5,7 +5,7 @@
     </el-config-provider>
   </div>
 </template>
-<script lang="ts">
+<script>
 import { defineComponent, reactive, ref, toRefs } from 'vue'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 
@@ -21,7 +21,7 @@ export default defineComponent({
   },
 })
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .app {
 }
 </style>

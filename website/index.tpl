@@ -7,6 +7,12 @@
     <title>test</title>
     <meta name="description" content="Element Plus, a Vue 3 based component library for developers, designers and product managers" />
   </head>
+  <style>
+    html,body{
+      padding: 0;
+      margin : 0;
+    }
+  </style>
   <body>
     <div id="app"></div>
   </body>

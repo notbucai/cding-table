@@ -2,7 +2,7 @@
  * @Author: bucai<1450941858@qq.com>
  * @Date: 2021-08-17 15:14:57
  * @LastEditors: bucai<1450941858@qq.com>
- * @LastEditTime: 2021-08-22 15:20:14
+ * @LastEditTime: 2021-11-19 21:39:45
  * @Description:
  */
 /* eslint-disable @typescript-eslint/no-var-requires */
@@ -45,12 +45,27 @@ const config = {
       //   options: {
       //     appendTsSuffixTo: [/\.vue$/],
       //     transpileOnly: true,
+      //     configFile: path.resolve(__dirname, '../tsconfig.json'),
       //   },
       // },
+      // {
+      //   test: /\.(ts|js)x?$/,
+      //   exclude: /node_modules/,
+      //   loader: 'babel-loader',
+      // },
       {
-        test: /\.(ts|js)x?$/,
+        test: /\.ts|\.tsx$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        use: [
+          'babel-loader',
+          {
+            loader: 'ts-loader',
+            options: {
+              appendTsxSuffixTo: [/\.vue$/],
+              transpileOnly: true,
+            },
+          },
+        ],
       },
       {
         test: /\.vue$/,
@@ -86,6 +101,9 @@ const config = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.vue', '.json'],
     alias: {
+      crypto: false,
+      vm: false,
+      path: false,
       vue: `vue/dist/${vueBundle}`,
       examples: path.resolve(__dirname),
     },
@@ -93,6 +111,7 @@ const config = {
   plugins: [
     new ProgressBarPlugin(),
     new VueLoaderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: './website/index.tpl',
       filename: './index.html',

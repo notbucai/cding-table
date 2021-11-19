@@ -2,7 +2,7 @@
  * @Author: bucai<1450941858@qq.com>
  * @Date: 2021-08-17 15:13:15
  * @LastEditors: bucai<1450941858@qq.com>
- * @LastEditTime: 2021-11-11 19:00:21
+ * @LastEditTime: 2021-11-19 19:18:52
  * @Description:
  */
 import { createApp, nextTick } from 'vue'
@@ -18,7 +18,13 @@ import ElementPlus from 'element-plus'
 import 'element-plus/lib/theme-chalk/index.css'
 // import '@element-plus/icons'
 
+import registerComponents from './components'
+
+import { TableData } from 'cding-table'
+
 const app = createApp(App)
+registerComponents(app)
+app.component('TableData', TableData)
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -26,6 +32,7 @@ const router = createRouter({
 })
 app.use(ElementPlus)
 app.use(router)
+
 router.isReady().then(() => {
 
   router.afterEach(async () => {

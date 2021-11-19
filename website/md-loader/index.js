@@ -6,9 +6,8 @@ const {
 } = require('./util')
 const md = require('./config')
 
-module.exports = function(source) {
+module.exports = function (source) {
   const content = md.render(source)
-
   const startTag = '<!--element-demo:'
   const startTagLen = startTag.length
   const endTag = ':element-demo-->'
@@ -27,11 +26,11 @@ module.exports = function(source) {
     const commentContent = content.slice(commentStart + startTagLen, commentEnd)
     const html = stripTemplate(commentContent)
     const script = stripScript(commentContent)
-    let demoComponentContent = genInlineComponentText(html, script)
-    const demoComponentName = `element-demo${id}`
-    output.push(`<template #source><${demoComponentName} /></template>`)
+    const demoComponentName = `element-demo-${id}`
+    let demoComponentContent = genInlineComponentText(html, script, demoComponentName)
+    console.log('demoComponentContent', demoComponentContent)
+    output.push(`<template v-slot:source1><${demoComponentName}/></template>`)
     componenetsString += `${JSON.stringify(demoComponentName)}: ${demoComponentContent},`
-
     // 重新计算下一次的位置
     id++
     start = commentEnd + endTagLen
