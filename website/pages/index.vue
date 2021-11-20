@@ -32,11 +32,8 @@
 <script lang="tsx">
 import { defineComponent, reactive, ref } from 'vue'
 
-import { TableData } from 'cding-table'
-
 export default defineComponent({
   components: {
-    TableData,
   },
   setup () {
     const tableDataRef = ref(null)
