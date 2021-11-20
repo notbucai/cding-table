@@ -4,6 +4,9 @@ const {
   stripTemplate,
   genInlineComponentText,
 } = require('./util')
+const babelConfig = require('../../babel.config')
+const babel = require('@babel/core')
+
 const md = require('./config')
 
 module.exports = function (source) {
@@ -12,7 +15,6 @@ module.exports = function (source) {
   const startTagLen = startTag.length
   const endTag = ':element-demo-->'
   const endTagLen = endTag.length
-
   let componenetsString = ''
   let id = 0 // demo 的 id
   let output = [] // 输出的内容
@@ -26,8 +28,15 @@ module.exports = function (source) {
     const commentContent = content.slice(commentStart + startTagLen, commentEnd)
     const html = stripTemplate(commentContent)
     const script = stripScript(commentContent)
+    const newScript = babel.transform(script, {
+      filename: 'test.tsx',
+      presets: [
+        '@babel/typescript',
+      ],
+    }).code
+
     const demoComponentName = `element-demo-${id}`
-    let demoComponentContent = genInlineComponentText(html, script, demoComponentName)
+    let demoComponentContent = genInlineComponentText(html, newScript, demoComponentName)
     output.push(`<template v-slot:source1><${demoComponentName}/></template>`)
     componenetsString += `${JSON.stringify(demoComponentName)}: ${demoComponentContent},`
     // 重新计算下一次的位置
@@ -42,8 +51,9 @@ module.exports = function (source) {
 
   let pageScript = ''
   if (componenetsString) {
-    pageScript = `<script lang="ts">
+    pageScript = `<script lang="tsx">
       import * as Vue from 'vue';
+      
       export default {
         name: 'component-doc',
         components: {

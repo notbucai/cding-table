@@ -8,8 +8,8 @@
     <div class="source">
       <slot name="source1"></slot>
     </div>
-    <div class="meta" ref="meta">
-      <div class="description" v-if="$slots.default">
+    <div ref="meta" class="meta">
+      <div v-if="$slots.default" class="description">
         <slot></slot>
       </div>
       <div class="highlight">
@@ -17,8 +17,8 @@
       </div>
     </div>
     <div
-      class="demo-block-control"
       ref="control"
+      class="demo-block-control"
       :class="{ 'is-fixed': fixedControl }"
       @click="isExpanded = !isExpanded"
     >
@@ -88,8 +88,7 @@ export default {
   },
 
   created () {
-    console.log(this.$slots.source)
-    const highlight = this.$slots.highlight
+    const highlight = this.$slots.highlight && this.$slots.highlight()
     if (highlight && highlight[0]) {
       let code = ''
       let cur = highlight[0]
@@ -122,12 +121,9 @@ export default {
   },
 
   methods: {
-    goCodepen () {},
-
-    scrollHandler () {},
-
+    // scrollHandler () {},
     removeScrollHandler () {
-      this.scrollParent && this.scrollParent.removeEventListener('scroll', this.scrollHandler)
+      // this.scrollParent && this.scrollParent.removeEventListener('scroll', this.scrollHandler)
     },
   },
 }
@@ -205,6 +201,8 @@ export default {
       border: none;
       max-height: none;
       border-radius: 0;
+      font-size: 12px;
+      line-height: 1.8;
 
       &::before {
         content: none;
