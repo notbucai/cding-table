@@ -2,7 +2,7 @@
  * @Author: bucai<1450941858@qq.com>
  * @Date: 2021-08-17 15:14:57
  * @LastEditors: bucai<1450941858@qq.com>
- * @LastEditTime: 2021-11-20 12:14:26
+ * @LastEditTime: 2021-11-20 12:35:04
  * @Description:
  */
 /* eslint-disable @typescript-eslint/no-var-requires */
@@ -35,7 +35,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, '../website-dist'),
     publicPath: '/',
-    filename: isProd ? '[name].[hash].js' : '[name].js',
+    filename: isProd ? '[name].[contenthash].js' : '[name].js',
   },
   module: {
     rules: [
