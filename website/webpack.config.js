@@ -2,7 +2,7 @@
  * @Author: bucai<1450941858@qq.com>
  * @Date: 2021-08-17 15:14:57
  * @LastEditors: bucai<1450941858@qq.com>
- * @LastEditTime: 2021-11-20 12:43:39
+ * @LastEditTime: 2021-11-20 18:55:22
  * @Description:
  */
 /* eslint-disable @typescript-eslint/no-var-requires */
@@ -12,9 +12,13 @@ const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+// const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
+// const smp = new SpeedMeasurePlugin()
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -33,9 +37,10 @@ const config = {
     ? path.resolve(__dirname, './play.js')
     : path.resolve(__dirname, './entry.js'),
   output: {
+    clean: true,
     path: path.resolve(__dirname, '../website-dist'),
     publicPath: '/',
-    filename: isProd ? '[name].[contenthash].js' : '[name].js',
+    filename: isProd ? '[name].[contenthash:4].js' : '[name].js',
   },
   module: {
     rules: [
@@ -119,8 +124,13 @@ const config = {
       filename: './index.html',
       favicon: './website/favicon.ico',
     }),
-    // new BundleAnalyzerPlugin(),
   ],
+  externals: {
+    vue: 'Vue',
+    'vue-router': 'VueRouter',
+    'element-plus': 'ElementPlus',
+    'highlight.js': 'hljs',
+  },
   devServer: {
     inline: true,
     // 如果使用 vue 的生产环境构建包，无法启用 hmr
@@ -132,8 +142,8 @@ const config = {
     overlay: true,
   },
   optimization: {
-    minimize: true,
-    minimizer: [new CssMinimizerPlugin()],
+    minimize: isProd,
+    minimizer: isProd ? [new TerserPlugin(), new CssMinimizerPlugin()] : [],
   },
 }
 
@@ -150,25 +160,28 @@ const cssRule = {
   ],
 }
 
-// if (isProd) {
-config.plugins.push(
-  new MiniCssExtractPlugin({
-    filename: '[name].[contenthash].css',
-    chunkFilename: '[id].[contenthash].css',
-  }),
-  new webpack.DefinePlugin({
-    __VUE_OPTIONS_API__: JSON.stringify(true),
-    __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
-  }),
-)
-cssRule.use.unshift({
-  loader: MiniCssExtractPlugin.loader,
-  options: {
-    esModule: false,
-  },
-})
-// } else {
-cssRule.use.unshift('style-loader')
-// }
+if (isProd) {
+  config.plugins.push(
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash:4].css',
+      chunkFilename: '[id].[contenthash:4].css',
+    }),
+    new webpack.DefinePlugin({
+      __VUE_OPTIONS_API__: JSON.stringify(true),
+      __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
+    }),
+  )
+  cssRule.use.unshift({
+    loader: MiniCssExtractPlugin.loader,
+    options: {
+      esModule: false,
+    },
+  })
+} else {
+  cssRule.use.unshift('style-loader')
+}
+if (process.env.NODE_ANALYZER_ENV) {
+  config.plugins.push(new BundleAnalyzerPlugin())
+}
 config.module.rules.push(cssRule)
 module.exports = config

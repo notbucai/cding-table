@@ -31,7 +31,7 @@
 
 
 <script>
-import { stripScript, stripStyle, stripTemplate } from '../md-loader/util'
+// import { stripScript, stripStyle, stripTemplate } from '../md-loader/util'
 
 export default {
   data () {
@@ -99,9 +99,9 @@ export default {
         }
       }
       if (code) {
-        this.codepen.html = stripTemplate(code)
-        this.codepen.script = stripScript(code)
-        this.codepen.style = stripStyle(code)
+        // this.codepen.html = stripTemplate(code)
+        // this.codepen.script = stripScript(code)
+        // this.codepen.style = stripStyle(code)
       }
     }
   },
