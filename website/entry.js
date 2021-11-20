@@ -2,7 +2,7 @@
  * @Author: bucai<1450941858@qq.com>
  * @Date: 2021-08-17 15:13:15
  * @LastEditors: bucai<1450941858@qq.com>
- * @LastEditTime: 2021-11-19 19:18:52
+ * @LastEditTime: 2021-11-20 12:44:55
  * @Description:
  */
 import { createApp, nextTick } from 'vue'
@@ -20,7 +20,7 @@ import 'element-plus/lib/theme-chalk/index.css'
 
 import registerComponents from './components'
 
-import { TableData } from 'cding-table'
+import { TableData } from 'main'
 
 const app = createApp(App)
 registerComponents(app)

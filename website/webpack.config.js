@@ -2,7 +2,7 @@
  * @Author: bucai<1450941858@qq.com>
  * @Date: 2021-08-17 15:14:57
  * @LastEditors: bucai<1450941858@qq.com>
- * @LastEditTime: 2021-11-20 12:35:04
+ * @LastEditTime: 2021-11-20 12:43:39
  * @Description:
  */
 /* eslint-disable @typescript-eslint/no-var-requires */
@@ -106,6 +106,7 @@ const config = {
       vm: false,
       path: false,
       vue: '@vue/runtime-dom',
+      main: path.resolve(__dirname, '../src'),
       examples: path.resolve(__dirname),
     },
   },
