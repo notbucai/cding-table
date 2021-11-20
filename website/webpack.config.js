@@ -2,7 +2,7 @@
  * @Author: bucai<1450941858@qq.com>
  * @Date: 2021-08-17 15:14:57
  * @LastEditors: bucai<1450941858@qq.com>
- * @LastEditTime: 2021-11-19 21:39:45
+ * @LastEditTime: 2021-11-20 12:14:26
  * @Description:
  */
 /* eslint-disable @typescript-eslint/no-var-requires */
@@ -22,12 +22,13 @@ const isProd = process.env.NODE_ENV === 'production'
  * 是否使用生产环境的 vue
  */
 const isVueProd = process.env.VUE_BUNDLE === 'production' || isProd
-const vueBundle = isVueProd ? 'vue.esm-browser.prod.js' : 'vue.esm-browser.js'
+// const vueBundle = isVueProd ? 'vue.esm-browser.prod.js' : 'vue.esm-browser.js'
 const isPlay = !!process.env.PLAY_ENV
 
 const config = {
   mode: isProd ? 'production' : 'development',
   devtool: !isProd ? 'eval-source-map' : false,
+  // target: 'node',
   entry: isPlay
     ? path.resolve(__dirname, './play.js')
     : path.resolve(__dirname, './entry.js'),
@@ -104,7 +105,7 @@ const config = {
       crypto: false,
       vm: false,
       path: false,
-      vue: `vue/dist/${vueBundle}`,
+      vue: '@vue/runtime-dom',
       examples: path.resolve(__dirname),
     },
   },

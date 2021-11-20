@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { compileTemplate, TemplateCompiler } = require('@vue/compiler-sfc')
+const { compileTemplate } = require('@vue/compiler-sfc')
 
 function stripScript(content) {
   const result = content.match(/<(script)>([\s\S]+)<\/\1>/)

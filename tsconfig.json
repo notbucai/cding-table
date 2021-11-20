@@ -11,6 +11,7 @@
    "resolveJsonModule": true,
    "target": "es6",
    "sourceMap": true,
+   "outDir": "./lib",
    "allowJs": true,
    "lib": [
      "ESNext", "DOM"
@@ -19,6 +20,7 @@
  },
  "exclude": [
    "lib",
+   "dist",
    "coverage",
    "node_modules"
  ]

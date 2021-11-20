@@ -28,7 +28,6 @@ module.exports = function (source) {
     const script = stripScript(commentContent)
     const demoComponentName = `element-demo-${id}`
     let demoComponentContent = genInlineComponentText(html, script, demoComponentName)
-    console.log('demoComponentContent', demoComponentContent)
     output.push(`<template v-slot:source1><${demoComponentName}/></template>`)
     componenetsString += `${JSON.stringify(demoComponentName)}: ${demoComponentContent},`
     // 重新计算下一次的位置
