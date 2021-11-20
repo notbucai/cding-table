@@ -2,7 +2,7 @@
  * @Author: bucai<1450941858@qq.com>
  * @Date: 2021-08-17 20:17:34
  * @LastEditors: bucai<1450941858@qq.com>
- * @LastEditTime: 2021-11-11 20:09:42
+ * @LastEditTime: 2021-11-20 19:49:12
  * @Description: 
  */
 module.exports = {
@@ -61,9 +61,8 @@ module.exports = {
     'vue/singleline-html-element-content-newline': 'off',
     'vue/html-self-closing': ['error', {
       html: {
-        void: 'never',
+        void: 'always',
         normal: 'never',
-        component: 'always',
       },
     }],
     'vue/max-attributes-per-line': ['error', {
