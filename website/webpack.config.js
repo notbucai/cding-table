@@ -2,7 +2,7 @@
  * @Author: bucai<1450941858@qq.com>
  * @Date: 2021-08-17 15:14:57
  * @LastEditors: bucai<1450941858@qq.com>
- * @LastEditTime: 2021-11-21 16:51:07
+ * @LastEditTime: 2021-11-21 20:16:26
  * @Description:
  */
 /* eslint-disable @typescript-eslint/no-var-requires */
@@ -13,7 +13,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
-const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
+// 安装成本太高了
+// const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 // const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 
@@ -225,17 +226,17 @@ if (isProd) {
       __VUE_OPTIONS_API__: JSON.stringify(true),
       __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
     }),
-    new ImageMinimizerPlugin({
-      minimizerOptions: {
-        // Lossless optimization with custom option
-        // Feel free to experiment with options for better result for you
-        plugins: [
-          ['gifsicle', { interlaced: true }],
-          ['jpegtran', { progressive: true }],
-          ['optipng', { optimizationLevel: 5 }],
-        ],
-      },
-    }),
+    // new ImageMinimizerPlugin({
+    //   minimizerOptions: {
+    //     // Lossless optimization with custom option
+    //     // Feel free to experiment with options for better result for you
+    //     plugins: [
+    //       ['gifsicle', { interlaced: true }],
+    //       ['jpegtran', { progressive: true }],
+    //       ['optipng', { optimizationLevel: 5 }],
+    //     ],
+    //   },
+    // }),
   )
   cssRule.use.unshift({
     loader: MiniCssExtractPlugin.loader,
