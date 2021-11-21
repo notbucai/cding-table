@@ -11,6 +11,9 @@ This is an element-Puls table component that can be configured to perform comple
     <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/notbucai/cding-table">
 </p>
 
+<!-- ![./website/assets/images/home-pic.png](./website/assets/images/home-pic.png) -->
+<img src="./website/assets/images/home-pic.png" style="max-width: 680px;"/>
+
 ## 🤪 Installation
 
 ### Using Package Manager 
