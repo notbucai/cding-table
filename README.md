@@ -1,4 +1,6 @@
-# cding-table
+# Cding Table ｜ 表格快速成型工具
+
+Cding Table，一个为开发者准备的基于 Vue 3.0 和 Element Plus 的数据表格组件库。
 
 This is an element-Puls table component that can be configured to perform complex operations on the table.
 
@@ -9,25 +11,40 @@ This is an element-Puls table component that can be configured to perform comple
     <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/notbucai/cding-table">
 </p>
 
-## 🤪 Installing
+## 🤪 Installation
 
-### NPM
-
+### Using Package Manager 
 ```bash
-$ npm install cding-table
-```
+# NPM
+$ npm install cding-table --save
 
-### Yarn
-
-```bash
+# Yarn
 $ yarn add cding-table
+```
+### Import in Browser
+### UMD
+```html
+<!-- Import element-plus style -->
+<link rel="stylesheet" href="//unpkg.com/element-plus/dist/index.css" />
+<!-- Import Vue 3 -->
+<script src="//unpkg.com/vue@next"></script>
+<!-- Import component element-plus -->
+<script src="//unpkg.com/element-plus"></script>
+
+<!-- Import component cding-table -->
+<script src="//unpkg.com/cding-table/lib/index.full.min.js"></script>
 ```
 
 ## 😵 Usage
+### `webpack` or `rollup`
 
+最小使用
 ```javascript
-// 导入 cding-table
+// import cding-table
 import { TableData } from 'cding-table'
+
+// 使用
+<table-data :columns="columns" :load-method="loadMethod" />
 
 // 列名
 const columns = [
@@ -78,17 +95,40 @@ async function loadMethod ({ page, sort }) {
     }
   })
 }
-// 使用
-<table-data :columns="columns" :load-method="loadMethod" />
 ```
 
 ## 🌚 Options
-参数可参考 ElTable 参数 额外参数将标记
-
-> 注意：Options 暂时不做二级对象的合并只做替换，如果需要修改子对象请完整替换。
+参数 config 可参考 ElTable 参数 额外参数将标记
 
 ```ts
-type Options = {
+{
+  size: {
+    type: String as PropType<'mini' | 'medium' | 'small'>,
+    default: 'medium',
+  },
+  config: {
+    type: Object as PropType<ConfigType<any>>,
+  },
+  initLoad: {
+    type: Boolean,
+    default: true,
+  },
+  loadMethod: {
+    required: true,
+    type: Function as PropType<(event: { page: { pageIndex: number; pageSize: number; }; sort?: { [key: string]: any; }; }) => Promise<{
+      total: number
+      list: any[]
+    }>>,
+  },
+  loadTree: {
+    type: Function as PropType<(row: any, treeNode: TreeNode, resolve: (data: any[]) => void) => void>,
+  },
+  columns: {
+    type: Object as PropType<ColumnType[]>,
+  },
+}
+
+type Config = {
   stripe?: boolean
   height?: string | number
   maxHeight?: string | number

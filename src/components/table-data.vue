@@ -247,8 +247,8 @@ export default {
 
 </script>
 
-<style lang="scss" scoped>
+<!-- <style lang="scss" scoped>
 .cding-table-data {
   color: #ccc;
 }
-</style>
+</style> -->
