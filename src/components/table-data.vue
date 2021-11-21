@@ -9,7 +9,7 @@
       :load="private_handleLoadTree"
       style="width: 100%"
       @selection-change="private_handleSelectionChange"
-      @current-change="private_handleCurreentChange"
+      @current-change="private_handleCurrentChange"
       @sort-change="private_handleSortChange"
     >
       <template v-for="(item, index) in columns" :key="index">
@@ -213,7 +213,7 @@ export default defineComponent({
       private_handleSelectionChange (e: any[]) {
         emit('selection-change', e)
       },
-      private_handleCurreentChange (e: any[]) {
+      private_handleCurrentChange (e: any[]) {
         emit('current-change', e)
       },
       private_handleSortChange ({ column, prop, order }) {

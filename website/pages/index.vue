@@ -22,7 +22,7 @@
       :columns="columns"
       :config="config"
       @sort-change="handleSortChange"
-      @current-change="handleCurreentChange"
+      @current-change="handleCurrentChange"
       @selection-change="handleSelectionChange"
     />
     <div style="margin-top: 20px">
@@ -289,7 +289,7 @@ export default defineComponent({
       handleSelectionChange (e) {
         console.log('e', e)
       },
-      handleCurreentChange (e) {
+      handleCurrentChange (e) {
         console.log('e', e)
       },
       handleSortChange (e) {
