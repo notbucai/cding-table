@@ -8,7 +8,7 @@
   <!-- <link rel="stylesheet" href="//at.alicdn.com/t/font_137970_p1tpzmomxp9cnmi.css"> -->
   <title>表格快速成型工具 | Cding Table</title>
   <meta name="description"
-    content="Element Plus, a Vue 3 based component library for developers, designers and product managers" />
+    content="This is an element-Puls table component that can be configured to perform complex operations on the table." />
   <!-- 导入样式 -->
   <link rel="stylesheet" href="//unpkg.com/element-plus/dist/index.css" />
   <link rel="stylesheet" href="//unpkg.com/highlight.js/styles/color-brewer.css" />
