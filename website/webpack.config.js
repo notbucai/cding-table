@@ -2,7 +2,7 @@
  * @Author: bucai<1450941858@qq.com>
  * @Date: 2021-08-17 15:14:57
  * @LastEditors: bucai<1450941858@qq.com>
- * @LastEditTime: 2021-11-20 18:55:22
+ * @LastEditTime: 2021-11-21 16:51:07
  * @Description:
  */
 /* eslint-disable @typescript-eslint/no-var-requires */
@@ -13,6 +13,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 // const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 
@@ -71,6 +72,12 @@ const config = {
               transpileOnly: true,
             },
           },
+          {
+            loader: 'thread-loader',
+            options: {
+              workerParallelJobs: 2,
+            },
+          },
         ],
       },
       {
@@ -118,13 +125,15 @@ const config = {
   plugins: [
     new ProgressBarPlugin(),
     new VueLoaderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: './website/index.tpl',
       filename: './index.html',
       favicon: './website/favicon.ico',
     }),
   ],
+  cache: {
+    type: 'filesystem', // 使用文件缓存
+  },
   externals: {
     vue: 'Vue',
     'vue-router': 'VueRouter',
@@ -143,7 +152,38 @@ const config = {
   },
   optimization: {
     minimize: isProd,
-    minimizer: isProd ? [new TerserPlugin(), new CssMinimizerPlugin()] : [],
+    runtimeChunk: isProd,
+    minimizer: isProd
+      ?
+      [
+        new TerserPlugin({
+          parallel: 4,
+          terserOptions: {
+            parse: {
+              ecma: 8,
+            },
+            compress: {
+              ecma: 5,
+              warnings: false,
+              comparisons: false,
+              inline: 2,
+            },
+            mangle: {
+              safari10: true,
+            },
+            output: {
+              ecma: 5,
+              comments: false,
+              ascii_only: true,
+            },
+          },
+        }),
+        new CssMinimizerPlugin({
+          parallel: 4,
+        }),
+      ]
+      :
+      [],
   },
 }
 
@@ -161,6 +201,21 @@ const cssRule = {
 }
 
 if (isProd) {
+  config.optimization.splitChunks = {
+    // include all types of chunks
+    chunks: 'all',
+    // 重复打包问题
+    cacheGroups: {
+      vendors: {
+        // node_modules里的代码
+        test: /[\\/]node_modules[\\/]/,
+        chunks: 'all',
+        // name: 'vendors', 一定不要定义固定的name
+        priority: 10, // 优先级
+        enforce: true,
+      },
+    },
+  }
   config.plugins.push(
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash:4].css',
@@ -170,6 +225,17 @@ if (isProd) {
       __VUE_OPTIONS_API__: JSON.stringify(true),
       __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
     }),
+    new ImageMinimizerPlugin({
+      minimizerOptions: {
+        // Lossless optimization with custom option
+        // Feel free to experiment with options for better result for you
+        plugins: [
+          ['gifsicle', { interlaced: true }],
+          ['jpegtran', { progressive: true }],
+          ['optipng', { optimizationLevel: 5 }],
+        ],
+      },
+    }),
   )
   cssRule.use.unshift({
     loader: MiniCssExtractPlugin.loader,
@@ -178,6 +244,7 @@ if (isProd) {
     },
   })
 } else {
+  config.plugins.push(new webpack.HotModuleReplacementPlugin())
   cssRule.use.unshift('style-loader')
 }
 if (process.env.NODE_ANALYZER_ENV) {

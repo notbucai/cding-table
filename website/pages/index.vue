@@ -11,7 +11,11 @@
         </p>
       </div>
       <div class="pic">
-        <img src="../assets/images/home-pic.png" alt="" />
+        <img
+          src="../assets/images/home-pic.png"
+          alt=""
+          @mousemove="onPicMousemove"
+        />
       </div>
     </div>
     <TableData
@@ -26,26 +30,25 @@
       @selection-change="handleSelectionChange"
     />
     <div style="margin-top: 20px">
-      <el-button type="primary" size="mini" @click="handleSelectMony([1, 3])"
+      <el-button
+        type="primary"
+        size="mini"
+        @click="handleSelectMony([1, 3])"
         >选中2和4</el-button
       >
-      <el-button type="primary" size="mini" @click="handleSelectMony([0])"
+      <el-button
+        type="primary"
+        size="mini"
+        @click="handleSelectMony([0])"
         >选中1</el-button
       >
-      <el-button type="primary" size="mini" @click="handleClearSelect()"
+      <el-button
+        type="primary"
+        size="mini"
+        @click="handleClearSelect()"
         >取消选中</el-button
       >
     </div>
-    <p>
-      {{ data.a }}-
-      {{ data.b.c }}
-    </p>
-    <p>
-      {{ data1.a }}-
-      {{ data1.b.c }}
-      {{ data1.b.c.e }}
-    </p>
-    <button @click="test">test</button>
   </div>
 </template>
 
@@ -65,7 +68,7 @@ export default defineComponent({
         name: '王小虎 async',
         province: '上海',
         city: '普陀区',
-        address: '上海市普陀区金沙江路 1518 弄',
+        address: '上海市普陀区金沙江路2 1518 弄',
         zip: 200333,
         hasChildren: true,
       },
@@ -137,6 +140,19 @@ export default defineComponent({
     ]
 
     return {
+      onPicMousemove (e) {
+        const { offsetWidth,offsetHeight } = e.target
+        const { offsetX,offsetY } = e
+        const w2 = offsetWidth / 2
+        const h2 = offsetHeight / 2
+        const x = (offsetX - w2) / w2
+        const y = (offsetY - h2) / h2
+        const scale = 1 + Math.sqrt(x * x + y * y) / 2 * 0.02
+        const rotateX = x
+        const rotateY = y
+        const transform = `scale(${scale}) rotateY(${rotateX / 2}deg) rotateZ(${rotateY / 2}deg)`
+        e.target.style.transform = transform
+      },
       tableDataRef,
       config: {
         stripe: true,
@@ -295,31 +311,9 @@ export default defineComponent({
       handleSortChange (e) {
         console.log(e)
       },
-      data: ref({
-        a: 1,
-        b: {
-          c: 2,
-        },
-      }),
-      data1: reactive({
-        a: 1,
-        b: {
-          c: 2,
-        },
-      }),
-      test () {
-        console.log(this.data1)
-        this.data1.b.c = {
-          e: 2,
-        }
-
-        setTimeout(() => {
-          this.data1.b.c.e = 4
-        }, 1000)
-      },
     }
   },
-});
+})
 
 </script>
 
@@ -337,6 +331,7 @@ export default defineComponent({
       margin: 36px auto;
       img {
         width: 100%;
+        transition: .1s;
       }
     }
   }

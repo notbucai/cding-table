@@ -10,6 +10,9 @@
           <div class="navbar-list">
             <router-link to="/" class="navbar-item">首页</router-link>
             <router-link to="/component" class="navbar-item">指南</router-link>
+            <a href="https://github.com/notbucai/cding-table" target="_blank" class="navbar-item">
+            <img src="./assets/images/github.png" alt="" />
+            </a>
           </div>
         </div>
       </header>
@@ -63,9 +66,17 @@ export default defineComponent({
         }
       }
       .navbar-list {
+        display: flex;
+        align-items: center;
         .navbar-item {
           margin-left: 24px;
           color: #888;
+          display: block;
+          img{
+            width: 32px;
+            height: 32px;
+            transform: translateX(0);
+          }
         }
         :deep(.router-link-active) {
           color: #409eff;
