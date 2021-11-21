@@ -26,20 +26,20 @@
     "JSON table",
     "Options Table"
   ],
-  "sideEffects": ["./website/assets/styles/fonts/style.css","./website/assets/styles/common.scss", "*.vue"],
+  "sideEffects": [
+    "./website/assets/styles/fonts/style.css",
+    "./website/assets/styles/common.scss",
+    "*.vue"
+  ],
   "scripts": {
     "test": "jest --coverage",
-    "build": "rollup --config ./build/rollup.config.js",
+    "dev": "rollup --config ./build/rollup.config.js --watch --sourcemap",
+    "build": "cross-env NODE_ENV=production rollup --config ./build/rollup.config.js --sourcemap",
     "website:dev": "webpack server --profile --config ./website/webpack.config.js",
     "website:build": "cross-env NODE_ENV=production webpack --profile --config ./website/webpack.config.js",
     "website:analyzer": "cross-env NODE_ANALYZER_ENV=true cross-env NODE_ENV=production webpack --profile --config ./website/webpack.config.js",
-    "rollup:dev": "rollup --config ./build/rollup.config.js --watch --sourcemap",
     "lint-fix": "eslint --fix .",
     "lint": "eslint --ext .js,.vue,.ts,.tsx --ignore-path .gitignore --fix src",
-    "preinstall": "npx only-allow yarn",
-    "pretest": "npx only-allow yarn",
-    "prewebsite:dev": "npx only-allow yarn",
-    "prerollup:dev": "npx only-allow yarn",
     "prepublishOnly": "node prepublish.js",
     "prepare": "husky install"
   },
@@ -100,6 +100,7 @@
     "progress-bar-webpack-plugin": "^2.1.0",
     "rollup": "^2.60.0",
     "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-esbuild": "^4.5.0",
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-postcss": "^4.0.1",
@@ -107,6 +108,7 @@
     "rollup-plugin-scss": "3",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-plugin-uglify": "^6.0.4",
     "rollup-plugin-vue": "^6.0.0",
     "sass": "^1.38.0",
     "sass-loader": "^12.1.0",

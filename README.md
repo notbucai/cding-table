@@ -29,6 +29,7 @@ $ yarn add cding-table
 // 导入 cding-table
 import { TableData } from 'cding-table'
 
+// 列名
 const columns = [
   {
     prop: 'id',
@@ -49,6 +50,7 @@ const columns = [
   },
 ];
 
+// 加载函数
 async function loadMethod ({ page, sort }) {
   return new Promise(r => {
     setTimeout(() => {
@@ -81,6 +83,7 @@ async function loadMethod ({ page, sort }) {
 ```
 
 ## 🌚 Options
+参数可参考 ElTable 参数 额外参数将标记
 
 > 注意：Options 暂时不做二级对象的合并只做替换，如果需要修改子对象请完整替换。
 

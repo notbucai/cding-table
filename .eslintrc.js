@@ -2,7 +2,7 @@
  * @Author: bucai<1450941858@qq.com>
  * @Date: 2021-08-17 20:17:34
  * @LastEditors: bucai<1450941858@qq.com>
- * @LastEditTime: 2021-11-20 19:49:12
+ * @LastEditTime: 2021-11-21 17:12:50
  * @Description: 
  */
 module.exports = {
@@ -65,6 +65,7 @@ module.exports = {
         normal: 'never',
       },
     }],
+    "vue/comment-directive": "off",
     'vue/max-attributes-per-line': ['error', {
       singleline: 3,
       multiline: 1,

@@ -12,9 +12,7 @@
       @current-change="private_handleCurrentChange"
       @sort-change="private_handleSortChange"
     >
-      <template v-for="(item, index) in columns" :key="index">
-        <table-data-column :column="item" />
-      </template>
+      <table-data-column v-for="(item, index) in columns" :key="index" :column="item" />
     </el-table>
     <div style="margin-top: 10px">
       <el-pagination
@@ -33,7 +31,7 @@
 
 <script lang="ts">
 import {
-  CSSProperties, defineComponent,
+  CSSProperties,
   onMounted, PropType, reactive, ref,
 } from 'vue'
 import { ElTable, ElPagination, ElLoading } from 'element-plus'
@@ -122,7 +120,7 @@ export interface ConfigType<T> {
   style?: CSSProperties
 };
 
-export default defineComponent({
+export default {
   name: 'CdingTable',
   components: {
     ElTable,
@@ -134,8 +132,8 @@ export default defineComponent({
   },
   props: {
     size: {
-      type: Object as PropType<'mini' | 'medium' | 'small'>,
-      // default: 'medium',
+      type: String as PropType<'mini' | 'medium' | 'small'>,
+      default: 'medium',
     },
     config: {
       type: Object as PropType<ConfigType<any>>,
@@ -245,7 +243,7 @@ export default defineComponent({
       },
     }
   },
-})
+}
 
 </script>
 
