@@ -53,7 +53,7 @@
 </template>
 
 <script lang="tsx">
-import { defineComponent, reactive, ref } from 'vue'
+import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
   components: {
@@ -141,8 +141,8 @@ export default defineComponent({
 
     return {
       onPicMousemove (e) {
-        const { offsetWidth,offsetHeight } = e.target
-        const { offsetX,offsetY } = e
+        const { offsetWidth, offsetHeight } = e.target
+        const { offsetX, offsetY } = e
         const w2 = offsetWidth / 2
         const h2 = offsetHeight / 2
         const x = (offsetX - w2) / w2
@@ -215,6 +215,7 @@ export default defineComponent({
           label: '时间',
           prop: 'date',
           width: '',
+          filters: [{ text: 'box', value: 'box' }, { text: 'joy', value: 'joy' }],
           formatter (row) {
             return (
               <el-checkbox-group vModel={row.name}>
@@ -331,7 +332,7 @@ export default defineComponent({
       margin: 36px auto;
       img {
         width: 100%;
-        transition: .1s;
+        transition: 0.1s;
       }
     }
   }
