@@ -1,6 +1,5 @@
 import { mount as _mount } from '@vue/test-utils'
 import { nextTick } from 'vue'
-import { ElButton } from 'element-plus'
 
 import TableData from '../components/table-data.vue'
 import flushPromises from 'flush-promises'
