@@ -12,7 +12,11 @@
       @current-change="private_handleCurrentChange"
       @sort-change="private_handleSortChange"
     >
-      <table-data-column v-for="(item, index) in columns" :key="index" :column="item" />
+      <table-data-column
+        v-for="(item, index) in columns"
+        :key="index"
+        :column="item"
+      />
     </el-table>
     <div style="margin-top: 10px">
       <el-pagination
@@ -156,7 +160,7 @@ export default {
       type: Object as PropType<ColumnType[]>,
     },
   },
-  emits: ['selection-change', 'current-change'],
+  emits: ['selection-change', 'current-change', 'sort-change'],
   setup (props, { emit }) {
     const loading = ref(false)
     const tableRef = ref(null)
@@ -220,7 +224,7 @@ export default {
           sort.prop = order
         }
         sortData.value = sort
-        emit('current-change', { column, prop, order })
+        emit('sort-change', { column, prop, order })
         loadData()
       },
       private_handleLoadTree (row: any, treeNode: TreeNode, resolve: (data: any[]) => void) {
