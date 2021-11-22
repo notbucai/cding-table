@@ -109,7 +109,7 @@ describe('rendering data is correct', () => {
         })
       },
     },
-  });
+  })
   it('head', async () => {
     await nextTick()
     const ths = wrapper.findAll('thead th')
@@ -138,7 +138,7 @@ describe('rendering data is correct', () => {
   afterAll(() => {
     wrapper.unmount()
   })
-});
+})
 
 describe('Table.vue', () => {
 
@@ -364,15 +364,15 @@ describe('Table.vue', () => {
 
     expect(loadMockFn.mock.instances.length).toBe(2)
     expect(loadMockFn.mock.calls[1][0].page.pageIndex).toBe(2)
-      // 刷新
-      ; (td.vm as any).refreshData()
+    // 刷新
+    ; (td.vm as any).refreshData()
     await nextTick()
     await flushPromises()
     expect(loadMockFn.mock.instances.length).toBe(3)
     expect(loadMockFn.mock.calls[2][0].page.pageIndex).toBe(2)
 
-      // 手动调用刷新
-      ; (td.vm as any).loadData()
+    // 手动调用刷新
+    ; (td.vm as any).loadData()
     await nextTick()
     await flushPromises()
     expect(loadMockFn.mock.instances.length).toBe(4)
@@ -582,7 +582,7 @@ describe('Table.vue', () => {
     expect(handleSortChange.mock.calls[1][0].order).toBe('descending')
 
     wrapper.unmount()
-  });
+  })
 
   it('table load tree data', async () => {
     const loadTree = jest.fn()
@@ -625,13 +625,13 @@ describe('Table.vue', () => {
               children: [
                 {
                   id: '314',
-                  name: 'box'
+                  name: 'box',
                 },
                 {
                   id: '324',
-                  name: '9527'
-                }
-              ]
+                  name: '9527',
+                },
+              ],
             },
             {
               id: '44',
@@ -667,7 +667,7 @@ describe('Table.vue', () => {
                 id: 214,
                 name: 'jay',
               },
-            ]);
+            ])
           }, 0)
         },
       },
@@ -683,7 +683,7 @@ describe('Table.vue', () => {
     await nextTick()
     expect(loadTree.mock.instances.length).toBe(1)
     wrapper.unmount()
-  });
+  })
 
 
   it('table filter', async () => {
@@ -729,22 +729,22 @@ describe('Table.vue', () => {
             {
               id: '22',
               name: '11',
-              value: "不啊升级换代回test看哈老师地方",
+              value: '不啊升级换代回test看哈老师地方',
             },
             {
               id: '33',
               name: 'layData',
-              value: "阿萨德和i就啊可不才是党v纪test国法",
+              value: '阿萨德和i就啊可不才是党v纪test国法',
             },
             {
               id: '44',
               name: 'box',
-              value: "阿道夫不才好看垃圾恶化",
+              value: '阿道夫不才好看垃圾恶化',
             },
             {
               id: '55',
               name: 'joy',
-              value: "test",
+              value: 'test',
             },
           ],
         }
@@ -766,31 +766,31 @@ describe('Table.vue', () => {
     await flushPromises()
     await nextTick()
     wrapper.find('.el-table__column-filter-trigger').trigger('click')
-    await nextTick();
+    await nextTick()
     ; (document.querySelector('.el-table-filter[aria-hidden="false"] .el-table-filter__wrap .el-checkbox') as HTMLElement).click()
-    await nextTick();
+    await nextTick()
     ; (document.querySelector('.el-table-filter[aria-hidden="false"] .el-table-filter__bottom button') as HTMLElement).click()
     await nextTick()
     expect(wrapper.findAll('.el-table__row').length).toBe(1)
 
     wrapper.find('.el-table__column-filter-trigger').trigger('click')
-    await nextTick();
+    await nextTick()
     ; (document.querySelector('.el-table-filter[aria-hidden="false"] .el-table-filter__bottom button:last-child') as HTMLElement).click()
 
-    await nextTick();
+    await nextTick()
     expect(wrapper.findAll('.el-table__row').length).toBe(4)
 
     wrapper.find('.el-table__cell:nth-child(2) .el-table__column-filter-trigger').trigger('click')
-    await nextTick();
+    await nextTick()
 
     ; (document.querySelector('.el-table-filter[aria-hidden="false"] .el-table-filter__wrap .el-checkbox') as HTMLElement).click()
-    await nextTick();
+    await nextTick()
     ; (document.querySelector('.el-table-filter[aria-hidden="false"] .el-table-filter__bottom button') as HTMLElement).click()
 
     expect(filterMethod.mock.calls.length).toBeGreaterThan(3)
 
     wrapper.unmount()
-  });
+  })
 
 
   it('table load tree data', async () => {
@@ -834,13 +834,13 @@ describe('Table.vue', () => {
               children: [
                 {
                   id: '314',
-                  name: 'box'
+                  name: 'box',
                 },
                 {
                   id: '324',
-                  name: '9527'
-                }
-              ]
+                  name: '9527',
+                },
+              ],
             },
             {
               id: '44',
@@ -876,7 +876,7 @@ describe('Table.vue', () => {
                 id: 214,
                 name: 'jay',
               },
-            ]);
+            ])
           }, 0)
         },
       },
@@ -892,7 +892,7 @@ describe('Table.vue', () => {
     await nextTick()
     expect(loadTree.mock.instances.length).toBe(1)
     wrapper.unmount()
-  });
+  })
 
 
   it('table children columns', async () => {
@@ -959,7 +959,7 @@ describe('Table.vue', () => {
               city: '普陀区',
               address: '上海市普陀区金沙江路 1518 弄',
               zip: 200323,
-            }
+            },
           ],
         }
       },
@@ -980,9 +980,9 @@ describe('Table.vue', () => {
     await flushPromises()
     await nextTick()
     expect(wrapper.find('.el-table__cell[colspan="3"]').exists()).toBe(true)
-    
+
     expect(wrapper.findAll('.el-table__header tr:nth-child(2) th').length).toBe(3)
 
     wrapper.unmount()
-  });
+  })
 })
