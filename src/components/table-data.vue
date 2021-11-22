@@ -35,8 +35,8 @@ import {
   onMounted, PropType, reactive, ref,
 } from 'vue'
 import { ElTable, ElPagination, ElLoading } from 'element-plus'
-import { TableColumnCtx } from 'element-plus/lib/el-table/src/table-column/defaults'
-import { ColumnCls, ColumnStyle, TreeNode } from 'element-plus/lib/el-table/src/table/defaults'
+import { TableColumnCtx } from 'element-plus/es/components/table/src/table-column/defaults'
+import { ColumnCls, ColumnStyle, TreeNode } from 'element-plus/es/components/table/src/table/defaults'
 import TableDataColumn from './table-data-column'
 import { ColumnType } from './types'
 type SummaryMethod<T> = (data: {

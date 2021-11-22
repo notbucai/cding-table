@@ -33,6 +33,7 @@ import navs from '../nav.config.json'
     }
     .sidebar-group-title {
       font-weight: bold;
+      padding: 10px 0;
     }
     .sidebar {
       .sidebar-item {
