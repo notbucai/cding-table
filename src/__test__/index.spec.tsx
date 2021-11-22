@@ -8,10 +8,10 @@ import flushPromises from 'flush-promises'
 window.ResizeObserver =
 window.ResizeObserver ||
 jest.fn().mockImplementation(() => ({
-    disconnect: jest.fn(),
-    observe: jest.fn(),
-    unobserve: jest.fn(),
-}));
+  disconnect: jest.fn(),
+  observe: jest.fn(),
+  unobserve: jest.fn(),
+}))
 
 const mount = (opt: any) =>
   _mount<any>(opt, {
