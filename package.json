@@ -32,7 +32,7 @@
     "*.vue"
   ],
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest --coverage && codecov",
     "dev": "rollup --config ./build/rollup.config.js --watch --sourcemap",
     "build": "cross-env NODE_ENV=production rollup --config ./build/rollup.config.js --sourcemap",
     "website:dev": "webpack server --profile --config ./website/webpack.config.js",
@@ -61,12 +61,13 @@
     "@vue/babel-plugin-jsx": "^1.1.1",
     "@vue/cli-plugin-babel": "^4.5.13",
     "@vue/compiler-sfc": "^3.2.22",
-    "@vue/test-utils": "^2.0.0-rc.12",
+    "@vue/test-utils": "^2.0.0-rc.17",
     "babel-loader": "^8.2.2",
     "babel-plugin-import": "^1.13.3",
     "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-module-resolver": "^4.1.0",
     "clipboard-copy": "^4.0.1",
+    "codecov": "^3.8.3",
     "colors": "^1.4.0",
     "cross-env": "^7.0.3",
     "crypto-browserify": "^3.12.0",

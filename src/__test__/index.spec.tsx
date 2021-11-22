@@ -5,9 +5,17 @@ import { ElButton } from 'element-plus'
 import TableData from '../components/table-data.vue'
 import flushPromises from 'flush-promises'
 
+window.ResizeObserver =
+window.ResizeObserver ||
+jest.fn().mockImplementation(() => ({
+    disconnect: jest.fn(),
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+}));
+
 const mount = (opt: any) =>
   _mount<any>(opt, {
-    attachTo: 'body',
+    // attachTo: 'body',
   })
 
 function getTestData () {
@@ -51,6 +59,7 @@ function getTestData () {
 }
 
 describe('Table.vue', () => {
+
   describe('rendering data is correct', () => {
     const wrapper = mount({
       components: {
@@ -127,7 +136,6 @@ describe('Table.vue', () => {
     const wrapper = mount({
       components: {
         TableData,
-        ElButton,
       },
       template: `
       <template>

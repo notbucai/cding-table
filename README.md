@@ -9,6 +9,9 @@ This is an element-Puls table component that can be configured to perform comple
     <img alt="GitHub issues" src="https://img.shields.io/github/issues/notbucai/cding-table">
     <img alt="GitHub" src="https://img.shields.io/github/license/notbucai/cding-table">
     <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/notbucai/cding-table">
+    <a href="https://codecov.io/gh/notbucai/cding-table">
+      <img src="https://codecov.io/gh/notbucai/cding-table/branch/main/graph/badge.svg?token=CIOEV3QL1G"/>
+    </a>
 </p>
 
 <!-- ![./website/assets/images/home-pic.png](./website/assets/images/home-pic.png) -->
