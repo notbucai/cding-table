@@ -19,6 +19,7 @@ export default defineComponent({
   },
   setup (props) {
     const filterMethod = (value: any, row: any, column: any) => {
+      // todo: 释放到 loadMethod，交给开发者处理
       const property = column['property']
       return row[property] === value
     }
@@ -39,6 +40,9 @@ export default defineComponent({
             formatter={column.formatter}
             sortable={column.sortable}
             filters={column.filters}
+            align={column.align}
+            headerAlign={column.headerAlign}
+            showOverflowTooltip={column.showOverflowTooltip}
             filter-method={column.filterMethod || (column.filters ? filterMethod : undefined)}
             // slots
             v-slots={{

@@ -165,7 +165,7 @@ export default {
     const loading = ref(false)
     const tableRef = ref(null)
     const sortData = ref({})
-
+    // todo: 分页props传递
     const pagination = reactive({
       currentPage: 1,
       pageSize: 20,
@@ -221,7 +221,8 @@ export default {
       private_handleSortChange ({ column, prop, order }) {
         const sort: { [key: string]: any; } = {}
         if (prop) {
-          sort.prop = order
+          sort.order = order
+          sort.prop = prop
         }
         sortData.value = sort
         emit('sort-change', { column, prop, order })
