@@ -2,7 +2,7 @@
  * @Author: bucai<1450941858@qq.com>
  * @Date: 2021-08-17 15:14:57
  * @LastEditors: bucai<1450941858@qq.com>
- * @LastEditTime: 2021-11-21 20:16:26
+ * @LastEditTime: 2021-11-23 13:29:58
  * @Description:
  */
 /* eslint-disable @typescript-eslint/no-var-requires */
@@ -13,6 +13,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
 // 安装成本太高了
 // const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
@@ -126,11 +128,22 @@ const config = {
   plugins: [
     new ProgressBarPlugin(),
     new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({
-      template: './website/index.tpl',
-      filename: './index.html',
-      favicon: './website/favicon.ico',
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          // 从public中复制文件
+          from: path.resolve(__dirname, 'public'),
+          // 把复制的文件存放到dis里面
+          to: path.resolve(__dirname, '../website-dist'),
+        },
+      ],
     }),
+    new HtmlWebpackPlugin({
+      template: './website/public/index.tpl',
+      filename: './index.html',
+      favicon: './website/public/favicon.ico',
+    }),
+
   ],
   cache: {
     type: 'filesystem', // 使用文件缓存

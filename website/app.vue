@@ -3,10 +3,10 @@
     <el-config-provider :locale="locale">
       <header class="navbar">
         <div class="navbar-wrapper">
-          <div class="logo-container">
+          <router-link to="/" class="logo-container">
             <img src="./assets/images/logo.png" alt="logo" />
             <span>CdingTable</span>
-          </div>
+          </router-link>
           <div class="navbar-list">
             <router-link to="/" class="navbar-item">首页</router-link>
             <router-link to="/component" class="navbar-item">指南</router-link>
@@ -21,7 +21,7 @@
   </div>
 </template>
 <script>
-import { defineComponent, reactive, ref, toRefs } from 'vue'
+import { defineComponent, reactive, toRefs } from 'vue'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 
 export default defineComponent({
@@ -59,6 +59,10 @@ export default defineComponent({
         color: #3086ff;
         display: flex;
         align-items: center;
+        transition: .2s;
+        &:hover{
+          opacity: .9;
+        }
         img {
           width: 36px;
           height: 36px;
