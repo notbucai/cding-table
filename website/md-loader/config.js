@@ -23,10 +23,10 @@ config
   .end()
   .plugin('anchor').use(anchorPlugin, [
     {
-      level: 2,
+      level: 1,
       slugify: slugify,
-      // permalink: true,
-      // permalinkSymbol: '🔗',
+      permalink: true,
+      permalinkSymbol: '#',
       permalinkBefore: true,
     },
   ]).end()

@@ -72,7 +72,6 @@ function genInlineComponentText (template, script, id) {
   `
   // todo: 这里采用了硬编码有待改进
   script = script.trim()
-
   if (script) {
     script = script
       .replace(/export\s+default/, 'const democomponentExport =')
@@ -81,7 +80,9 @@ function genInlineComponentText (template, script, id) {
         s1 = s1.replace(/ as /g, ':')
         return `const ${s1} = Vue`
       })
-      .replace('createVNode:_createVNode', '')
+      .replace(/createVNode:_createVNode,?/, '')
+      .replace(/createTextVNode:_createTextVNode,?/, '')
+      .replace(/resolveComponent:_resolveComponent,?/, '')
       .replace(/import (.*) from ['"](.*)['"]/g, (s, s1, s2) => `const ${s1} = require('${s2}')`)
       .replace(/import ({.*}) from ['"]element-plus['"]/g, (s, s1) => `const ${s1} = require('element-plus')`)
   } else {
