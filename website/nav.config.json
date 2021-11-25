@@ -8,7 +8,11 @@
       },
       {
         "path": "/quickstart",
-        "name": "使用方式"
+        "name": "快速开始"
+      },
+      {
+        "path": "/property",
+        "name": "属性与方法"
       }
     ]
   },

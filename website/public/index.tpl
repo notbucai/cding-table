@@ -19,7 +19,6 @@
   <!-- 导入组件库 -->
   <script src="//unpkg.com/element-plus"></script>
   <script src="//unpkg.com/@highlightjs/cdn-assets/highlight.min.js"></script>
-  <script src="//unpkg.com/browse/@element-plus/icons@latest/lib/index.js"></script>
 </head>
 <style>
   html,

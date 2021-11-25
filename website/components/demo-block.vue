@@ -23,7 +23,7 @@
       @click="isExpanded = !isExpanded"
     >
       <transition name="arrow-slide">
-        <i :class="[iconClass, { hovering: hovering }]"></i>
+        <el-icon><arrow-down-bold v-if="!isExpanded" /><arrow-up-bold v-else /></el-icon>
       </transition>
     </div>
   </div>
@@ -31,9 +31,12 @@
 
 
 <script>
-// import { stripScript, stripStyle, stripTemplate } from '../md-loader/util'
-
+import { ArrowDownBold, ArrowUpBold } from '@element-plus/icons'
 export default {
+  components:{
+    ArrowDownBold,
+    ArrowUpBold,
+  },
   data () {
     return {
       codepen: {
@@ -51,10 +54,6 @@ export default {
 
     blockClass () {
       return `demo-zh`
-    },
-
-    iconClass () {
-      return this.isExpanded ? 'el-icon-caret-top' : 'el-icon-caret-bottom'
     },
 
     codeArea () {

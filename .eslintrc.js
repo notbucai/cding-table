@@ -2,8 +2,8 @@
  * @Author: bucai<1450941858@qq.com>
  * @Date: 2021-08-17 20:17:34
  * @LastEditors: bucai<1450941858@qq.com>
- * @LastEditTime: 2021-11-21 17:12:50
- * @Description: 
+ * @LastEditTime: 2021-11-24 16:02:19
+ * @Description:
  */
 module.exports = {
   parser: 'vue-eslint-parser',
@@ -25,7 +25,7 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:vue/vue3-recommended',
-    'prettier'
+    'prettier',
   ],
   rules: {
     'no-console': 1,
@@ -65,7 +65,7 @@ module.exports = {
         normal: 'never',
       },
     }],
-    "vue/comment-directive": "off",
+    'vue/comment-directive': 'off',
     'vue/max-attributes-per-line': ['error', {
       singleline: 3,
       multiline: 1,

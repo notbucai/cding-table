@@ -1,7 +1,7 @@
 <template>
   <div class="right-nav">
     <div class="sidebar-groups">
-      <div v-for="group in navs" :key="group.name" class="sidebar-group">
+      <div v-for="group in props.navs" :key="group.name" class="sidebar-group">
         <div class="sidebar-group-title">
           <span>{{ group.name }}</span>
         </div>
@@ -21,7 +21,10 @@
   </div>
 </template>
 <script setup>
-import navs from '../nav.config.json'
+// import navs from '../nav.config.json'
+const props = defineProps({
+  navs: Array,
+})
 
 </script>
 <style lang="scss" scoped>
