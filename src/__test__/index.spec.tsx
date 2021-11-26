@@ -3,7 +3,7 @@ import { nextTick } from 'vue'
 
 import TableData from '../components/table-data.vue'
 import flushPromises from 'flush-promises'
-import { ElPagination } from 'element-plus'
+// import { ElPagination } from 'element-plus'
 
 window.ResizeObserver =
   window.ResizeObserver ||
@@ -74,7 +74,7 @@ describe('rendering data is correct', () => {
       this.columns = [
         {
           type: 'expand',
-          render ({ row, column, $index }) {
+          render ({ row }) {
             return <p>name: {row.name}</p>
           },
         },
@@ -128,7 +128,7 @@ describe('rendering data is correct', () => {
   it('row data', () => {
     const cells = wrapper.findAll('td .cell').map(node =>
       node.text(),
-    ).filter(item=>item)
+    ).filter(item => item)
     const testDataArr = getTestData().flatMap(cur => {
       return Object.values(cur).map(String)
     })
@@ -436,7 +436,7 @@ describe('Table.vue', () => {
         }
       },
       methods: {
-        async loadMethod (e) {
+        async loadMethod () {
           return new Promise(r => {
             r(1)
           }).then(() => {
@@ -550,7 +550,7 @@ describe('Table.vue', () => {
         }
       },
       methods: {
-        async loadMethod (e) {
+        async loadMethod () {
           return new Promise(r => {
             r(1)
           }).then(() => {
@@ -645,7 +645,7 @@ describe('Table.vue', () => {
         }
       },
       methods: {
-        async loadMethod (e) {
+        async loadMethod () {
           return new Promise(r => {
             r(1)
           }).then(() => {
@@ -750,7 +750,7 @@ describe('Table.vue', () => {
         }
       },
       methods: {
-        async loadMethod (e) {
+        async loadMethod () {
           return new Promise(r => {
             r(1)
           }).then(() => {
@@ -854,7 +854,7 @@ describe('Table.vue', () => {
         }
       },
       methods: {
-        async loadMethod (e) {
+        async loadMethod () {
           return new Promise(r => {
             r(1)
           }).then(() => {
@@ -943,7 +943,7 @@ describe('Table.vue', () => {
               province: '上海',
               city: '普陀区',
               address: '上海市普陀区金沙江路2 1518 弄',
-            },{
+            }, {
               id: 3,
               date: '2016-05-12',
               name: '王小虎1',
@@ -964,7 +964,7 @@ describe('Table.vue', () => {
         }
       },
       methods: {
-        async loadMethod (e) {
+        async loadMethod () {
           return new Promise(r => {
             r(1)
           }).then(() => {
