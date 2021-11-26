@@ -12,6 +12,7 @@
   <!-- 导入样式 -->
   <link rel="stylesheet" href="//unpkg.com/element-plus/dist/index.css" />
   <link rel="stylesheet" href="//unpkg.com/highlight.js/styles/color-brewer.css" />
+  <link rel="stylesheet" href="//unpkg.com/nprogress/nprogress.css" />
   <!-- 导入 Vue 3 -->
   <script src="//unpkg.com/vue@next"></script>
   <!-- 导入 Vue router -->
@@ -19,6 +20,8 @@
   <!-- 导入组件库 -->
   <script src="//unpkg.com/element-plus"></script>
   <script src="//unpkg.com/@highlightjs/cdn-assets/highlight.min.js"></script>
+  <!-- 导入 nprogress -->
+  <script src="//unpkg.com/nprogress"></script>
 </head>
 <style>
   html,

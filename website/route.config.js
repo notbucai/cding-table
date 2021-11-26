@@ -8,7 +8,7 @@ const ErrorComponent = {
   template: `
     <div style="text-align: center;padding: 100px 0;">Loading error. Please refresh the page and try again</div>`,
 }
-const getAsyncComponent = func => {
+export const getAsyncComponent = func => {
   return defineAsyncComponent({
     loader: func,
     delay: 0,
@@ -114,5 +114,5 @@ route = route.concat([{
   path: '/*',
   redirect: { path: `/` },
 }])
-console.log('route', route)
+
 export default route

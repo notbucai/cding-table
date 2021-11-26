@@ -21,16 +21,12 @@
   </div>
 </template>
 <script>
-import { defineComponent, reactive, toRefs } from 'vue'
+import { defineComponent } from 'vue'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 
 export default defineComponent({
   setup () {
-    const a = reactive({
-      a: 1,
-    })
     return {
-      a: toRefs(a),
       locale: zhCn,
     }
   },

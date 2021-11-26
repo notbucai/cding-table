@@ -18,7 +18,12 @@ body {
   padding-top: 80px!important;
   height: calc(100% - 80px);
 }
-
+#nprogress .bar{
+  background: #2196f3!important;
+}
+#nprogress .peg{
+  box-shadow: 0 0 10px #2196f3, 0 0 5px #2196f3;
+}
 #app {
   height: 100%;
 
