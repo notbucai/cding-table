@@ -2,7 +2,7 @@
  * @Author: bucai<1450941858@qq.com>
  * @Date: 2021-08-17 15:14:57
  * @LastEditors: bucai<1450941858@qq.com>
- * @LastEditTime: 2021-11-23 13:29:58
+ * @LastEditTime: 2021-11-26 17:45:01
  * @Description:
  */
 /* eslint-disable @typescript-eslint/no-var-requires */
@@ -14,10 +14,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 
 // 安装成本太高了
 // const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
-const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 // const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
@@ -153,16 +154,18 @@ const config = {
     'vue-router': 'VueRouter',
     'element-plus': 'ElementPlus',
     'highlight.js': 'hljs',
+    'nprogress': 'NProgress',
   },
   devServer: {
     inline: true,
     // 如果使用 vue 的生产环境构建包，无法启用 hmr
     // 因为生产环境下 vue 没有注入 hmr 必须的 __VUE_HMR_RUNTIME__ api
     hot: !isVueProd,
-    stats: 'minimal',
+    // stats: 'minimal',
     publicPath: '/',
     contentBase: __dirname,
     overlay: true,
+    // stats: "",
   },
   optimization: {
     minimize: isProd,
@@ -259,6 +262,7 @@ if (isProd) {
   })
 } else {
   config.plugins.push(new webpack.HotModuleReplacementPlugin())
+  config.plugins.push(new FriendlyErrorsWebpackPlugin())
   cssRule.use.unshift('style-loader')
 }
 if (process.env.NODE_ANALYZER_ENV) {
