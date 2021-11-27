@@ -3,8 +3,8 @@
 const compiler = require('@vue/compiler-sfc')
 
 function stripScript (content) {
-  const result = content.match(/<(script) ?(lang="[tj]sx?")?>([\s\S]+)<\/\1>/)
-  return result && result[3] ? result[3].trim() : ''
+  const result = content.match(/<(script) ?(?:lang="[tj]sx?")? ?(?:setup)?>([\s\S]+)<\/\1>/)
+  return result && result[2] ? result[2].trim() : ''
 }
 
 function stripStyle (content) {
@@ -81,7 +81,7 @@ function genInlineComponentText (template, script, id) {
         return `const ${s1} = Vue`
       })
       .replace(/createVNode:_createVNode,?/, '')
-      .replace(/createTextVNode:_createTextVNode,?/, '')
+      .replace(/_createTextVNode/g, '__createTextVNode')
       .replace(/resolveComponent:_resolveComponent,?/, '')
       .replace(/import (.*) from ['"](.*)['"]/g, (s, s1, s2) => `const ${s1} = require('${s2}')`)
       .replace(/import ({.*}) from ['"]element-plus['"]/g, (s, s1) => `const ${s1} = require('element-plus')`)
