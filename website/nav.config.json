@@ -20,8 +20,12 @@
     "name": "例子",
     "children": [
       {
-        "path": "/test",
-        "name": "安装"
+        "path": "/base",
+        "name": "基础用法"
+      },
+      {
+        "path": "/formatter",
+        "name": "列格式化"
       }
     ]
   }

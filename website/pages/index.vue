@@ -19,6 +19,11 @@
       </div>
     </div>
 
+    <div class="home-info-item">
+      <h2 class="info-title">框架与思考</h2>
+      <p>作为长期在一线做业务开发，日常最怕的就是页面切换和重复的编码，又由于 Vue 的特性导致开发过程中频繁在template和script中切换，所以本组件本着降低切换成本，将template+options优化为options。</p>
+    </div>
+
     <div style="margin-bottom: 20px">
       <el-button
         type="primary"
@@ -294,6 +299,20 @@ export default defineComponent({
         width: 100%;
         transition: 0.1s;
       }
+    }
+  }
+  .home-info-item{
+    /* background-color: rgb(247, 252, 254); */
+    background-image: linear-gradient(-45deg, #fbfcf7 0%,  #eff9ff 100%);
+    padding: 20px 48px;
+    border-radius: 4px;
+    margin-bottom: 36px;
+    h2{
+      color: #0d1a26;
+    }
+    p{
+      color: #697b8c;
+      line-height: 2;
     }
   }
 }
