@@ -1,7 +1,7 @@
 <template>
   <div class="component-layout">
     <el-container>
-      <el-aside width="200px">
+      <el-aside class="component-aside">
         <left-nav :navs="navs" />
       </el-aside>
       <el-main class="component-content">
@@ -69,9 +69,16 @@ watch(route, ()=>{
 <style lang="scss" scoped>
 .component-layout {
   width: 1140px;
+   max-width: 96%;
   margin: 0 auto;
   font-size: 14px;
   padding-bottom: 36px;
+  .component-aside{
+    width: 200px;
+    @media (max-width: 768px) {
+      width: 100px;
+    }
+  }
   .footer-nav{
     display: flex;
     align-items: center;
@@ -87,7 +94,7 @@ watch(route, ()=>{
     padding: 0;
   }
   :deep(.element-doc) {
-    padding-left: 36px;
+    padding-left: 24px;
 
 
     h1,

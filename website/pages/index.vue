@@ -286,6 +286,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .index-page {
   width: 1140px;
+   max-width: 96%;
   margin: 0 auto;
   .project-desc {
     text-align: center;
@@ -294,6 +295,7 @@ export default defineComponent({
     }
     .pic {
       width: 820px;
+       max-width: 96%;
       margin: 36px auto;
       img {
         width: 100%;

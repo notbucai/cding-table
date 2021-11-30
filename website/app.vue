@@ -48,6 +48,7 @@ export default defineComponent({
       justify-content: space-between;
       height: 100%;
       width: 1140px;
+      max-width: 96%;
       margin: 0 auto;
       .logo-container {
         font-size: 20px;
